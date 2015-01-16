@@ -14,7 +14,8 @@ requirejs.config({
         'angular-resource': ['angular']
     },
     packages: [
-        'modules/home'
+        'modules/home',
+        'modules/nav'
     ],
     deps: ['app']
 });

@@ -2,6 +2,7 @@ define(function(require) {
     'use strict';
 
     var angular = require('angular'),
+        NavModule = require('modules/nav'),
         HomeModule = require('modules/home');
 
     require('angular-route');
@@ -17,7 +18,8 @@ define(function(require) {
     }
 
     var app = angular.module('App', [
-        HomeModule.name
+        HomeModule.name,
+        NavModule.name
     ])
         .config(RoutingConfig);
 

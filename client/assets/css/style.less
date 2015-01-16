@@ -1,9 +1,42 @@
-body {
-  margin: 0;
-  padding: 0;
-  position: relative;
+html, body {
+  height: 100%;
 }
 
-.c-home {
+body {
+  background: #ececec;
+  color: #212121;
+  font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-size: 82.5%;
+  margin: 0;
+  min-width: 400px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+.root {
   position: relative;
+  height: 100%;
+}
+
+.c-nav {
+  .container {
+    background: #4285f4;
+    box-sizing: border-box;
+    height: 56px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 22;
+    display: -webkit-flex;
+    display: flex;
+    box-shadow: 0 0 4px rgba(0,0,0,.14),0 4px 8px rgba(0,0,0,.28);
+    color: #fff;
+  }
+  h1 {
+    font-weight: normal;
+    font-size: 1.5em;
+    line-height: 56px;
+    margin: 0;
+    padding: 0 0 0 20px;
+  }
 }

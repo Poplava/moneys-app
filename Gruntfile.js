@@ -12,7 +12,7 @@ module.exports = function(grunt) {
                 files: [
                     {
                         expand: true,
-                        src: 'src/assets/css/*.less',
+                        src: 'client/assets/css/*.less',
                         ext: '.css'
                     }
                 ]
@@ -20,7 +20,7 @@ module.exports = function(grunt) {
         },
         watch: {
             app: {
-                files: ['src/assets/css/*.less'],
+                files: ['client/assets/css/*.less'],
                 tasks: ['less'],
                 options: {
                     spawn: false
