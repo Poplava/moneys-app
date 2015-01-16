@@ -10,7 +10,10 @@ define(function(require) {
     RoutingConfig.$inject = ['$locationProvider'];
 
     function RoutingConfig($locationProvider) {
-        $locationProvider.html5Mode(false);
+        $locationProvider.html5Mode({
+            enabled: true,
+            requireBase: false
+        });
     }
 
     var app = angular.module('App', [

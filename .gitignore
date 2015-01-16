@@ -1,3 +1,4 @@
-bower_components
+src/vendor
 .idea
 node_modules
+src/assets/css/*.css
