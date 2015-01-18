@@ -8,7 +8,13 @@ var moment = require('moment'),
     config = require('../../config'),
     User = require('../user/user.model');
 
-module.exports.google = google;
+module.exports.api = {
+    google: google,
+    user: user
+};
+
+module.exports.ensureAuthenticated = ensureAuthenticated;
+module.exports.createToken = createToken;
 
 function google(req, res) {
     var params = {
@@ -82,4 +88,27 @@ function createToken(user) {
     };
 
     return jwt.encode(payload, config.auth.TOKEN_SECRET);
+}
+
+function user(req, res) {
+    res.status(200).json(req.user);
+}
+
+function ensureAuthenticated(req, res, next) {
+    if (!req.headers.authorization) {
+        return res.status(401).send({ message: 'Please make sure your request has an Authorization header' });
+    }
+    var token = req.headers.authorization.split(' ')[1];
+    var payload = jwt.decode(token, config.auth.TOKEN_SECRET);
+    if (payload.exp <= moment().unix()) {
+        return res.status(401).send({ message: 'Token has expired' });
+    }
+
+    User.findById(payload.sub, function (err, user) {
+        if (!user) {
+            return res.status(400).send({ message: 'User not found' });
+        }
+        req.user = user;
+        next();
+    });
 }
