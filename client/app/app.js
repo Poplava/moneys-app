@@ -3,29 +3,26 @@ define(function(require) {
 
     var angular = require('angular'),
         NavModule = require('modules/nav'),
-        HomeModule = require('modules/home');
+        HomeModule = require('modules/home'),
+
+        RoutingConfig = require('config/routing'),
+        AuthConfig = require('config/auth');
 
     require('angular-route');
     require('angular-resource');
-
-    RoutingConfig.$inject = ['$locationProvider'];
-
-    function RoutingConfig($locationProvider) {
-        $locationProvider.html5Mode({
-            enabled: true,
-            requireBase: false
-        });
-    }
+    require('angular-satellizer');
 
     var app = angular.module('App', [
         HomeModule.name,
         NavModule.name
     ])
+        .config(AuthConfig)
         .config(RoutingConfig);
 
     angular.bootstrap(document, [
         'ngRoute',
         'ngResource',
+        'satellizer',
         app.name
     ]);
 });

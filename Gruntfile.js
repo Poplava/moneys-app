@@ -19,7 +19,7 @@ module.exports = function(grunt) {
             }
         },
         watch: {
-            app: {
+            client: {
                 files: ['client/assets/css/*.less'],
                 tasks: ['less'],
                 options: {
