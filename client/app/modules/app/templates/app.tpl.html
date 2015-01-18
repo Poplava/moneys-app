@@ -1,0 +1,7 @@
+<div class="root">
+    <div class="debug">
+        <pre>{{ model }}</pre>
+    </div>
+    <dg-app-login ng-if="!model.isAuthenticated"></dg-app-login>
+    <button class="btn btn-danger" ng-click="logout()">Logout</button>
+</div>

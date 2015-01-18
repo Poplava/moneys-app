@@ -1,8 +1,11 @@
+html, body {
+  height: 100%;
+}
+
 body {
   background: #ececec;
   color: #212121;
-  font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;
-  min-width: 400px;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   overflow-x: hidden;
   overflow-y: scroll;
 }
@@ -10,6 +13,26 @@ body {
 .root {
   position: relative;
   height: 100%;
+}
+
+.debug {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 200px;
+  opacity: .8;
+  z-index: 100;
+}
+
+.c-app-login {
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  .container {
+    position: relative;
+    top: 50%;
+    margin-top: -100px;
+  }
 }
 
 .c-nav {
