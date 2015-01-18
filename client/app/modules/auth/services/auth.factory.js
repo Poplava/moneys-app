@@ -19,7 +19,7 @@ define(function(require) {
                         .error(function() {
                             this.logout();
                         }.bind(this))
-                        .then(function() {
+                        .finally(function() {
                             this.model.isDone = true;
                         }.bind(this));
                 } else {
@@ -30,7 +30,7 @@ define(function(require) {
 
             login: function() {
                 this.model.isDone = false;
-                $auth.authenticate('google').then(this.auth.bind(this));
+                $auth.authenticate('google').finally(this.auth.bind(this));
             },
 
             logout: function() {

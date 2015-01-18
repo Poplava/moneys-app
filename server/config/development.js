@@ -2,13 +2,13 @@
 
 module.exports = {
     port: 3000,
-    ip: '127.0.0.1',
+    ip: 'localhost',
     mongo: {
         uri: 'mongodb://localhost/moneys'
     },
     auth: {
         google: {
-            secret: 'QZJwPMDL8stszFJitWzgNhV4',
+            secret: '',
             accessTokenUrl: 'https://accounts.google.com/o/oauth2/token',
             peopleApiUrl: 'https://www.googleapis.com/plus/v1/people/me/openIdConnect'
         },
