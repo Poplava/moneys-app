@@ -1,4 +1,4 @@
-src/vendor
+client/vendor
 .idea
 node_modules
 src/assets/css/*.css
