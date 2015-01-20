@@ -1,12 +1,12 @@
 {
-  "name": "ng-games",
-  "version": "1.0.0",
-  "description": "",
+  "name": "moneys-app",
+  "version": "0.0.1",
+  "description": "Money manager app",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "Igor Poplavsky <igor.poplava@gmail.com>",
   "license": "ISC",
   "devDependencies": {
     "grunt": "^0.4.5",
@@ -25,5 +25,18 @@
     "mongoose": "^3.8.21",
     "request": "^2.51.0",
     "underscore": "^1.7.0"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Poplava/moneys-app.git"
+  },
+  "keywords": [
+    "money",
+    "coin",
+    "finance"
+  ],
+  "bugs": {
+    "url": "https://github.com/Poplava/moneys-app/issues"
+  },
+  "homepage": "https://github.com/Poplava/moneys-app"
 }
