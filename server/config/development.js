@@ -8,7 +8,7 @@ module.exports = {
     },
     auth: {
         google: {
-            secret: '',
+            secret: 'QZJwPMDL8stszFJitWzgNhV4',
             accessTokenUrl: 'https://accounts.google.com/o/oauth2/token',
             peopleApiUrl: 'https://www.googleapis.com/plus/v1/people/me/openIdConnect'
         },
