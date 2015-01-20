@@ -1,8 +1,7 @@
 define(function(require) {
     'use strict';
 
-    var angular = require('angular'),
-        template = require('text!./nav.tpl.html');
+    var template = require('text!../templates/app.loading.tpl.html');
 
     return function() {
         return {
@@ -11,4 +10,5 @@ define(function(require) {
             template: template
         };
     };
+
 });

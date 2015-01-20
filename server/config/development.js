@@ -2,7 +2,7 @@
 
 module.exports = {
     port: 3000,
-    ip: 'localhost',
+    ip: '192.168.1.121',
     mongo: {
         uri: 'mongodb://localhost/moneys'
     },

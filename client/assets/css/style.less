@@ -33,6 +33,68 @@ body {
     top: 50%;
     margin-top: -100px;
   }
+  button {
+    .fa {
+      font-size: 26px;
+      display: inline-block;
+      vertical-align: top;
+    }
+  }
+}
+
+.c-view {
+  padding: 80px 0 0;
+}
+
+@-webkit-keyframes rotate {
+  from {
+    -webkit-transform: rotate(0);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+/* Standard syntax */
+@keyframes rotate {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.c-loading {
+  display: none;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: #ececec;
+  z-index: 900;
+  &.active {
+    display: block;
+  }
+  .inner {
+    color: #4285f4;
+    height: 100px;
+    width: 100px;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    font-size: 100px;
+    line-height: 100px;
+    text-align: center;
+    margin: -50px 0 0 -50px;
+    -webkit-animation: linear infinite rotate 2s; /* Chrome, Safari, Opera */
+    animation: linear infinite rotate 2s;
+    .fa {
+      display: inline-block;
+      vertical-align: top;
+    }
+  }
 }
 
 .c-nav {
@@ -41,19 +103,38 @@ body {
     box-sizing: border-box;
     height: 56px;
     position: fixed;
-    top: 0;
     width: 100%;
-    z-index: 22;
-    display: -webkit-flex;
-    display: flex;
-    box-shadow: 0 0 4px rgba(0,0,0,.14),0 4px 8px rgba(0,0,0,.28);
+    top: 0;
+    z-index: 5;
+    box-shadow: 0 0 4px rgba(0, 0, 0, .14), 0 4px 8px rgba(0, 0, 0, .28);
     color: #fff;
   }
-  h1 {
-    font-weight: normal;
+  .row {
+    position: relative;
+  }
+  .brand {
     font-size: 1.5em;
     line-height: 56px;
-    margin: 0;
-    padding: 0 0 0 20px;
+    padding: 0 0 0 70px;
+  }
+  .nav-button {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 56px;
+    height: 56px;
+    button {
+      background: #4285f4;
+      display: block;
+      position: relative;
+      border: none;
+      padding: 0;
+      margin: 0;
+      font-size: 28px;
+      text-align: center;
+      line-height: 56px;
+      width: 100%;
+      height: 100%;
+    }
   }
 }

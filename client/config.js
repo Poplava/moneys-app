@@ -18,7 +18,8 @@ requirejs.config({
     packages: [
         'modules/app',
         'modules/auth',
-        'modules/nav'
+        'modules/nav',
+        'modules/home'
     ],
     deps: ['app']
 });

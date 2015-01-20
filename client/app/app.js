@@ -5,6 +5,7 @@ define(function(require) {
         AppModule = require('modules/app'),
         NavModule = require('modules/nav'),
         AuthModule = require('modules/auth'),
+        HomeModule = require('modules/home'),
 
         RoutingConfig = require('config/routing'),
         AuthConfig = require('config/auth');
@@ -16,7 +17,8 @@ define(function(require) {
     var app = angular.module('App', [
         AppModule.name,
         NavModule.name,
-        AuthModule.name
+        AuthModule.name,
+        HomeModule.name
     ])
         .config(AuthConfig)
         .config(RoutingConfig);
