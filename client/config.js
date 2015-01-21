@@ -1,5 +1,5 @@
 requirejs.config({
-    baseUrl: 'app',
+    baseUrl: 'src',
     paths: {
         'angular': '../vendor/angular/angular',
         'angular-route': '../vendor/angular-route/angular-route',
@@ -16,10 +16,7 @@ requirejs.config({
         'angular-satellizer': ['angular']
     },
     packages: [
-        'modules/app',
-        'modules/auth',
-        'modules/nav',
-        'modules/home'
+        'app'
     ],
-    deps: ['app']
+    deps: ['bootstrap']
 });
