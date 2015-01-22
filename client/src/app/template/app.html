@@ -1,4 +1,9 @@
 <div>
-    <h1>APP</h1>
-    <h2>{{ model }}</h2>
+    <div class="c-loading" ng-hide="true">
+        <div class="inner">
+            <i class="fa fa-spinner"></i>
+        </div>
+    </div>
+    <button ng-click="login()">Login</button>
+    <div ng-view ng-if="state.isReady"></div>
 </div>

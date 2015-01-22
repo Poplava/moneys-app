@@ -1,7 +1,7 @@
 define(function(require) {
     'use strict';
 
-    function factory($http, $auth) {
+    function Factory($http, $auth) {
         return {
             model: {
                 isAuthenticated: false,
@@ -29,6 +29,10 @@ define(function(require) {
             },
 
             login: function() {
+                if (this.model.isAuthenticated) {
+                    return;
+                }
+
                 this.model.isDone = false;
                 $auth.authenticate('google').finally(this.auth.bind(this));
             },
@@ -44,7 +48,7 @@ define(function(require) {
         };
     }
 
-    factory.$inject = ['$http', '$auth'];
+    Factory.$inject = ['$http', '$auth'];
 
-    return factory;
+    return Factory;
 });
