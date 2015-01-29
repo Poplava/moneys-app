@@ -2,12 +2,9 @@ define(function(require) {
     'use strict';
 
     var angular = require('angular'),
-        StorageServiceModule = require('service/storage'),
         AuthFactory = require('./auth.factory'),
 
-        module = angular.module('AuthServiceModule', [
-            StorageServiceModule.name
-        ]);
+        module = angular.module('AuthServiceModule', []);
 
     module.factory('AuthFactory', AuthFactory);
 

@@ -3,11 +3,9 @@ define(function(require) {
 
     var AppController = function($scope, AuthFactory) {
         $scope.model = AuthFactory.model;
-        $scope.state = {
-            isReady: false
-        };
 
         $scope.login = AuthFactory.login.bind(AuthFactory);
+        $scope.logout = AuthFactory.logout.bind(AuthFactory);
 
         AuthFactory.auth();
     };

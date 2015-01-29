@@ -21,7 +21,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.engine('.html', require('ejs').__express);
-app.set('views', __dirname + '/pages');
+app.set('views', __dirname + '/../client/');
 app.set('view engine', 'html');
 
 app.all('/', function(req, res) {

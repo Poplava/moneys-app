@@ -1,42 +1,31 @@
 define(function(require) {
     'use strict';
 
-    function Factory($http, $auth, $q, StorageFactory) {
+    function Factory($http, $auth) {
         return {
             model: {
                 isAuthenticated: false,
-                isDone: false,
+                pending: true,
                 user: null
             },
 
             auth: function() {
                 this.model.isAuthenticated = $auth.isAuthenticated();
-                if (this.model.isAuthenticated) {
-                    this.setUser()
-                        .then((function() {
-                            this.model.isDone = true;
-                        }).bind(this));
-                }
-            },
-
-            setUser: function() {
-                var def = $q.defer(),
-                    user = StorageFactory.get('user');
-
-                if (user) {
-                    this.model.user = user;
-                    def.resolve(user);
-                } else {
-                    $http.get('/auth/user')
-                        .success((function(user) {
+                if ($auth.isAuthenticated()) {
+                    this.fetchUser()
+                        .success(function(user) {
                             this.model.user = user;
-                            StorageFactory.save('user', user);
-                            def.resolve(user);
-                        }).bind(this))
-                        .error(def.reject);
+                        }.bind(this))
+                        .error(function() {
+                            this.logout();
+                        }.bind(this))
+                        .finally(function() {
+                            this.model.pending = false;
+                        }.bind(this));
+                } else {
+                    this.model.pending = false;
+                    this.model.user = null;
                 }
-
-                return def.promise;
             },
 
             login: function() {
@@ -44,13 +33,22 @@ define(function(require) {
                     return;
                 }
 
-                this.model.isDone = false;
+                this.model.pending = true;
                 $auth.authenticate('google').finally(this.auth.bind(this));
+            },
+
+            logout: function() {
+                this.model.pending = true;
+                $auth.logout().then(this.auth.bind(this));
+            },
+
+            fetchUser: function() {
+                return $http.get('/auth/user');
             }
         };
     }
 
-    Factory.$inject = ['$http', '$auth', '$q', 'StorageFactory'];
+    Factory.$inject = ['$http', '$auth'];
 
     return Factory;
 });

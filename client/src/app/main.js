@@ -3,12 +3,10 @@ define(function(require) {
 
     var angular = require('angular'),
         AuthServiceModule = require('service/auth'),
-        StorageServiceModule = require('service/storage'),
         AppDirective = require('./directive/app.directive'),
 
         module = angular.module('App', [
-            AuthServiceModule.name,
-            StorageServiceModule.name
+            AuthServiceModule.name
         ]);
 
     module.directive('mApp', AppDirective);

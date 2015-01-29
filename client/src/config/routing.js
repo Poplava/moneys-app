@@ -3,7 +3,7 @@ define(function() {
 
     function RoutingConfig($locationProvider) {
         $locationProvider.html5Mode({
-            enabled: true,
+            enabled: false,
             requireBase: false
         });
     }

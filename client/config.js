@@ -17,8 +17,7 @@ requirejs.config({
     },
     packages: [
         'app',
-        'service/auth',
-        'service/storage'
+        'service/auth'
     ],
     deps: ['bootstrap']
 });
