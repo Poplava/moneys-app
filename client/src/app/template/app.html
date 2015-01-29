@@ -1,10 +1,13 @@
 <div class="c-app">
-    <div ng-if="model.isAuthenticated">
-        <img ng-src="{{model.user.picture}}">
-        {{ model.user.name }}
-        <button class="btn" ng-click="logout()">Logout</button>
-    </div>
-    <div ng-if="!model.isAuthenticated">
-        <button class="btn" ng-click="login()">Login</button>
-    </div>
+    <header>
+        <div ng-if="model.isAuthenticated" layout horizontal>
+            <img ng-src="{{model.user.picture}}">
+            <div flex>{{ model.user.name }}</div>
+            <button class="btn" ng-click="logout()">Logout</button>
+        </div>
+        <div ng-if="!model.isAuthenticated" layout horizontal>
+            <div flex></div>
+            <button class="btn" ng-click="login()">Login</button>
+        </div>
+    </header>
 </div>
