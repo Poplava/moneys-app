@@ -1,30 +1,16 @@
+@import "flex";
+
 body {
   font-family: RobotoDraft, 'Helvetica Neue', Helvetica, Arial;
 }
 
-[layout][horizontal] {
-  -ms-flex-direction: row;
-  -webkit-flex-direction: row;
-  flex-direction: row;
-}
-[layout][horizontal], [layout][vertical] {
-  display: -ms-flexbox;
-  display: -webkit-flex;
-  display: flex;
-}
-[flex] {
-  -ms-flex: 1 1 0.000000001px;
-  -webkit-flex: 1;
-  flex: 1;
-  -webkit-flex-basis: 0.000000001px;
-  flex-basis: 0.000000001px;
-}
-
 .c-app {
-  header {
-    padding: 4px;
+  .c-toolbar {
     height: 56px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, .26);
-    background: #4285f4;
+    .toolbar {
+      padding: 4px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, .26);
+      background: #4285f4;
+    }
   }
 }
