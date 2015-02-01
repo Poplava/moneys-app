@@ -5,28 +5,24 @@ var express = require('express'),
 
     session = require('express-session'),
     bodyParser = require('body-parser'),
+    ejs = require('ejs'),
 
     config = require('./config'),
     routes = require('./routes'),
 
-    mongoose = require('mongoose');
+    mongoose = require('mongoose'),
+
+    clientDir = __dirname + '/../client';
 
 mongoose.connect(config.mongo.uri, config.mongo.options);
 
-var staticDirName = __dirname.split('/');
-staticDirName.pop();
-app.use(express.static(staticDirName.join('/') + '/client'));
-
+app.use(express.static(clientDir));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-app.engine('.html', require('ejs').__express);
-app.set('views', __dirname + '/../client/');
+app.engine('.html', ejs.__express);
+app.set('views', clientDir);
 app.set('view engine', 'html');
-
-app.all('/', function(req, res) {
-    res.render('index');
-});
 
 routes(app);
 
