@@ -1,7 +1,6 @@
 'use strict';
 
-var AuthModule = require('./modules/auth'),
-    CategoryModule = require('./modules/category');
+var UserModule = require('./module/user');
 
 module.exports = function(app) {
     console.log('Registering modules...');
@@ -10,9 +9,7 @@ module.exports = function(app) {
         res.render('index');
     });
 
-    app.use('/auth', AuthModule.api);
-
-    app.use('/api/category', CategoryModule.api);
+    app.use('/auth', UserModule.routes);
 
     console.log('Done!');
 };

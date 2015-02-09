@@ -2,7 +2,8 @@ define(function(require) {
     'use strict';
 
     var angular = require('angular'),
-        App = require('app'),
+        //App = require('app'),
+        UserModule = require('module/user'),
 
         RoutingConfig = require('config/routing'),
         AuthConfig = require('config/auth');
@@ -12,7 +13,7 @@ define(function(require) {
     require('angular-satellizer');
 
     var app = angular.module('MoneysApp', [
-        App.name
+        UserModule.name
     ])
         .config(AuthConfig)
         .config(RoutingConfig);

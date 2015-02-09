@@ -9,9 +9,16 @@
     <link rel="stylesheet" href="vendor/fontawesome/css/font-awesome.css" />
     <link rel="stylesheet" href="assets/css/style.css" />
 </head>
-<body fullbleed flex layout vertical>
+<body>
 
-<m-app></m-app>
+<div ng-controller="UserController">
+    <button ng-click="login()">Login</button>
+    <button ng-click="me()">get me</button>
+    <pre>
+        isAuthenticated: {{ isAuthenticated() }}
+        meData: {{ meData }}
+    </pre>
+</div>
 <script src="vendor/requirejs/require.js" data-main="config"></script>
 
 </body>

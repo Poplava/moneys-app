@@ -3,7 +3,6 @@
 var express = require('express'),
     app = express(),
 
-    session = require('express-session'),
     bodyParser = require('body-parser'),
     ejs = require('ejs'),
 
