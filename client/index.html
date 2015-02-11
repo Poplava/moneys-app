@@ -12,13 +12,14 @@
 <body>
 
 <div ng-controller="UserController">
-    <button ng-click="login()">Login</button>
-    <button ng-click="me()">get me</button>
+    <button ng-click="authenticate('google')">authenticate</button>
+    <button ng-click="logout()">logout</button>
     <pre>
-        isAuthenticated: {{ isAuthenticated() }}
-        meData: {{ meData }}
+isAuthenticated: {{ isAuthenticated() }}
+user: {{ user }}
     </pre>
 </div>
+<div ng-view></div>
 <script src="vendor/requirejs/require.js" data-main="config"></script>
 
 </body>

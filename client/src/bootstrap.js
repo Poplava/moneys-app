@@ -4,6 +4,7 @@ define(function(require) {
     var angular = require('angular'),
         //App = require('app'),
         UserModule = require('module/user'),
+        RootScreen = require('screen/root'),
 
         RoutingConfig = require('config/routing'),
         AuthConfig = require('config/auth');
@@ -13,7 +14,8 @@ define(function(require) {
     require('angular-satellizer');
 
     var app = angular.module('MoneysApp', [
-        UserModule.name
+        UserModule.name,
+        RootScreen.name
     ])
         .config(AuthConfig)
         .config(RoutingConfig);

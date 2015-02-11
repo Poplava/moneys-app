@@ -2,35 +2,28 @@ define(function(require) {
     'use strict';
 
     var angular = require('angular'),
+        UserFactory = require('./user.factory'),
 
         module = angular.module('UserModule', []);
 
-    function Controller($scope, $auth, $http) {
-        $scope.meData = {};
+    module.factory('UserFactory', UserFactory);
 
-        $scope.login = function() {
-            $auth.authenticate('google')
-                .then(function() {
-                    return $http.get('/auth/me');
-                })
-                .success(function(user) {
-                    console.log(user);
-                });
-        };
+    Controller.$inject = ['$scope', 'UserFactory'];
 
-        $scope.me = function() {
-            $http.get('/auth/me').success(function(me) {
-                $scope.meData = JSON.stringify(me, null, 2);
-            });
-        };
-
-        $scope.isAuthenticated = function() {
-            return $auth.isAuthenticated();
-        };
-    }
-
-    Controller.$inject = ['$scope', '$auth', '$http'];
     module.controller('UserController', Controller);
 
     return module;
+
+    function Controller($scope, UserFactory) {
+        $scope.user = UserFactory.user;
+        $scope.isAuthenticated = UserFactory.isAuthenticated;
+        $scope.authenticate = UserFactory.authenticate;
+        $scope.logout = UserFactory.logout;
+
+        $scope.$watch(function() {
+            return UserFactory.user;
+        }, function(user) {
+            $scope.user = user;
+        });
+    }
 });

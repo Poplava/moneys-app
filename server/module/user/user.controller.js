@@ -11,6 +11,7 @@ var async = require('async'),
 module.exports.google = google;
 module.exports.me = me;
 module.exports.decodeUserId = decodeUserId;
+module.exports.ensureAuthenticated = ensureAuthenticated;
 
 function google(req, res) {
     var params = {
@@ -97,6 +98,26 @@ function decodeUserId(req, res, next) {
     }
     req.userId = payload.sub;
     next();
+}
+
+function ensureAuthenticated(req, res, next) {
+    if (!req.headers.authorization) {
+        return res.status(401).send({
+            message: 'Please make sure your request has an Authorization header'
+        });
+    }
+    var token = req.headers.authorization.split(' ')[1];
+    var payload = jwt.decode(token, config.auth.TOKEN_SECRET);
+    if (payload.exp <= moment().unix()) {
+        return res.status(401).send({message: 'Token has expired'});
+    }
+    UserModel.findById(payload.sub).exec()
+        .then(function (user) {
+            req.user = user;
+            next();
+        }, function(err) {
+            return res.status(500).send({error: 'Wrong email and/or password'});
+        });
 }
 
 function me(req, res) {
